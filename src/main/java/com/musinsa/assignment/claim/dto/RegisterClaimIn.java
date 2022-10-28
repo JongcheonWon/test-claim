@@ -13,6 +13,6 @@ import java.util.List;
 @ToString
 public class RegisterClaimIn {
     private final long purchaseNo;
-    private final List<Long> productNo;
+    private final List<Long> productNoList;
     private final ClaimType claimType;
 }

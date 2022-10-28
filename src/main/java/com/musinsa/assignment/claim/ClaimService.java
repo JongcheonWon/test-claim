@@ -42,7 +42,7 @@ public class ClaimService {
         DeliveryPolicy deliveryPolicy = purchase.getDeliveryPolicy();
         DeliveryFee deliveryFee = claimTypeDeliveryFeeMap.get(registerClaimIn.getClaimType());
 
-        long calcDeliveryFee = deliveryFee.calculate(claimableProdList, deliveryPolicy, registerClaimIn.getProductNo());
+        long calcDeliveryFee = deliveryFee.calculate(claimableProdList, deliveryPolicy, registerClaimIn.getProductNoList());
 
         log.debug("Return Delivery Fee : {}", calcDeliveryFee);
 
@@ -59,7 +59,7 @@ public class ClaimService {
         claim.setRegisterDatetime(now);
         claim.addClaimRefund(claimRefund);
 
-        for (long productNo : registerClaimIn.getProductNo()) {
+        for (long productNo : registerClaimIn.getProductNoList()) {
             ClaimProduct claimProduct = new ClaimProduct();
             claimProduct.setProductNo(productNo);
             claimProduct.setProductQuantity(1);
